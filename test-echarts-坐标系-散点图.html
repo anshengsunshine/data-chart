@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.0.2/dist/echarts.min.js"></script>
+    <title>test-echarts-坐标系-散点图</title>
+    <style>
+        #echart {
+            width: 800px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="echart"></div>
+    <script>
+        const chartDom = document.getElementById("echart");
+        const chart = echarts.init(chartDom);
+        chart.setOption({
+            dataset: {
+                source: [
+                    [13, 44],
+                    [51, 51],
+                    [51, 32],
+                    [67, 19],
+                    [19, 3]
+                ]
+            },
+            xAxis: {},
+            yAxis: {},
+            series: [
+                {
+                    name: "散点图",
+                    type: "scatter",
+                    encode: { x: 0, y: 1 }
+                },
+            ]
+
+        })
+
+
+    </script>
+</body>
+
+</html>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.0.2/dist/echarts.min.js"></script>
-    <title>test-echarts-series</title>
+    <title>test-echarts-组件</title>
     <style>
         #echart {
             width: 800px;
@@ -464,8 +464,17 @@
         const chartDom = document.getElementById("echart");
         const chart = echarts.init(chartDom, 'westeros', { renderer: 'svg' });
         chart.setOption({
+            dataset: {
+                source: [
+                    ['第一季度', 100, 79, '分类1', 50],
+                    ['第二季度', 112, 81, '分类2', 60],
+                    ['第三季度', 96, 88, '分类3', 55],
+                    ['第四季度', 123, 72, '分类4', 70],
+                ]
+            },
             title: {
-                text: "Echarts 多系列系案例"
+                text: "Echarts 多系列系案例",
+                subtext:"可视化---"
             },
             xAxis: {
                 data: ['第一季度', '第二季度', '第三季度', '第四季度']
@@ -476,20 +485,15 @@
                     type: "pie",
                     center: ['65%', 60],
                     radius: 35,
-                    data: [
-                        { name: "分类1", value: 50 },
-                        { name: "分类2", value: 50 },
-                        { name: "分类3", value: 60 },
-                        { name: "分类4", value: 70 },
-                    ]
+                    encode: { itemName: 3, value: 4 }
                 },
                 {
                     type: "line",
-                    data: [100, 112, 60, 120]
+                    encode: { x: 0, y: 1 }
                 },
                 {
                     type: "bar",
-                    data: [100, 120, 90, 150]
+                    encode: { x: 0, y: 2 }
                 },
             ]
 

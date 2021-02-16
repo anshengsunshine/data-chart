@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test-canvas</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="800"></canvas>
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext('2d') // 获取到 Canvas 对象
+
+        /**
+         * ----绘制 矩形-----
+        */
+        ctx.fillStyle = "red";  // 修改填充色为红色
+        ctx.fillRect(0, 0, 50, 100);  // 绘制矩形（x, y, width, height）==>x/y 为坐标,(0, 0)为左上角起点坐标
+
+        /**
+         * -----绘制 线段----
+         * · 可重复使用 lineTo() 方法绘制多条线段
+         * · 第一次设置 lineWidth = 2，在经过 store() 绘制后，又一次设置 lineWidth = 1，再 stroke() 
+         *    --> 
+         *   则第一次 lineWidth 为 2px，第二次 lineWidth 为 1px
+         * 
+         * */
+        ctx.beginPath(); // 开始 绘制 路径
+        ctx.lineWidth = 2;  // 线的宽度
+        ctx.strokeStyle = 'blue'; // 线的填充色
+        ctx.moveTo(100, 100); // 线 - 起点 坐标
+        ctx.lineTo(250, 75);  // 线 - 中间点 坐标
+        // ctx.stroke(); // 绘制 线段
+        // ctx.lineWidth = 1;  // 线的宽度
+        ctx.lineTo(300, 100);  //线 - 结束 坐标
+        ctx.stroke(); // 绘制 线段
+
+        /**
+         * ----绘制 圆形----
+        */
+        ctx.beginPath(); // 开始 绘制 路径 --- >如果不重新添加这个，那么这个圆会和上面的路径图相连
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'green';  // 边框色为 绿色
+        ctx.fillStyle = 'red';
+        ctx.arc(200, 200, 50, 0, 2 * Math.PI);  // 绘制圆形的过程：圆心坐标 - (200,200)，半径 - 50，开始的角度 - 这个跟弧线相关 0，结束的角度，就是360°，这里是 2 * Math.PI(PI就是圆周率π，PI是弧度制的π,也就是180°)
+        ctx.stroke();  // 绘制圆形的边框
+        ctx.fill();  // 绘制圆形的填充色
+
+
+        /**
+         * -----绘制 点 ----
+         * 可以把点理解为一条线段
+         * 只是这个线段 长 = 1px  宽 = 1px
+        */
+        ctx.beginPath(); // 开始 绘制 路径
+        ctx.lineWidth = 1;  // 线的宽度
+        ctx.strokeStyle = 'red'; // 线的填充色
+        ctx.moveTo(300, 300); // 线 - 起点 坐标
+        ctx.lineTo(301, 301);  //线 - 结束 坐标
+        ctx.stroke(); // 绘制 线段
+
+
+    </script>
+</body>
+
+</html>

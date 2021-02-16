@@ -21,4 +21,12 @@ AntV-l7 入门Demo - 含高德地图
 # text-echarts.html
 echarts 入门Demo
 # text-echarts-series.html
-echarts - series多系列 使用
+echarts - series多系列 
+# text-echarts-dataset.html
+echarts - dataset 
+# text-echarts-组件.html
+echarts - legend/toolbox/datazoom 
+# text-echarts-定位.html
+echarts - grid 使用
+# text-echarts-坐标系-散点图/双坐标系/多坐标系.html
+echarts - 散点图/双坐标/多坐标 

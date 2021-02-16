@@ -474,24 +474,49 @@
             },
             title: {
                 text: "Echarts 多系列系案例",
-                subtext:"可视化---"
+                subtext: "可视化---"
             },
             xAxis: {
                 data: ['第一季度', '第二季度', '第三季度', '第四季度']
             },
             yAxis: {},
+            legend: {
+                data: [{
+                    name: '分类',
+                    icon: "circle"
+                }, '折线图', '柱状图']
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {},
+                    dataZoom: {
+                        yAxisIndex: false
+                    },
+                    restore: {},
+                }
+            },
+            dataZoom: [
+                {
+                    show: true,
+                    start: 30,
+                    end: 70
+                }
+            ],
             series: [
                 {
+                    name: "分类",
                     type: "pie",
                     center: ['65%', 60],
                     radius: 35,
                     encode: { itemName: 3, value: 4 }
                 },
                 {
+                    name: "折线图",
                     type: "line",
                     encode: { x: 0, y: 1 }
                 },
                 {
+                    name: "柱状图",
                     type: "bar",
                     encode: { x: 0, y: 2 }
                 },

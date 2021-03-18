@@ -1,3 +1,4 @@
+@import "./index.scss";
 /** 文字强调*/
 .emphasis {
     margin-left: 5px;
@@ -5,20 +6,20 @@
     font-weight: 700;
 }
 
-  /**三角形箭头 */
-  .increase {
+/**三角形箭头 */
+.increase {
     margin: 0 0 3px 5px;
     width: 0;
     height: 0;
     border-width: 3px;
     border-color: transparent transparent red transparent;
     border-style: solid;
-  }
-  .decrease {
+}
+.decrease {
     margin: 3px 0 0 5px;
     width: 0;
     height: 0;
     border-width: 3px;
     border-color: green transparent transparent transparent;
     border-style: solid;
-  }
+}

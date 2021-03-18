@@ -35,6 +35,7 @@ export default {
     letter-spacing: 1px;
   }
   .chart {
+    width: 100%;
     height: 50px;
   }
   .line {

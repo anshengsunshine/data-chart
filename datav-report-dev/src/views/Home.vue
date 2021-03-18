@@ -8,23 +8,23 @@
 </template>
 
 <script>
-import TopView from "@/components/topView"
-import SalesView from "@/components/salesView"
-import BottomView from "@/components/bottomView"
-import MapView from "@/components/mapView"
+import TopView from "@/components/topView";
+import SalesView from "@/components/salesView";
+import BottomView from "@/components/bottomView";
+import MapView from "@/components/mapView";
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     TopView,
     SalesView,
     BottomView,
-    MapView
-  }
-}
+    MapView,
+  },
+};
 </script>
 <style scoped>
-.home{
-  padding: 0 20px;
+.home {
+  padding: 20px;
   width: 100%;
   height: 100%;
   background-color: #eee;

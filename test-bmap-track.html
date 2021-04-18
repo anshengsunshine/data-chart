@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript"
+        src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=E4KWNrh8QmEXFOF0xaYahbokBPLWtHAE"></script>
+    <script type="text/javascript"
+        src="https://api.map.baidu.com/library/TrackAnimation/src/TrackAnimation_min.js"></script>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+
+        .anchorBL,
+        .BMap_cpyCtrl {
+            display: none;
+        }
+
+        #tools {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <div id="tools">
+        <button id="start">开始 -播放- 动画</button>
+        <button id="cancel">停止 -播放- 动画</button>
+    </div>
+    <script>
+        // console.log(window.BMapGL)
+        var map = new BMapGL.Map('map')
+        var point = new BMapGL.Point(116.307092, 40.054922)
+        map.centerAndZoom(point, 15)
+        map.enableScrollWheelZoom(true)
+
+        var points = [
+            new BMapGL.Point(116.418038, 39.91979),
+            new BMapGL.Point(116.418267, 40.0592479),
+            new BMapGL.Point(116.307899, 40.057038),
+        ]
+        var lines = new BMapGL.Polyline(points)
+        var opts = {
+            delay: 1000,
+            duration: 20000,
+            titl: 30,
+            overallView: true
+        }
+        var trackAnimation = new BMapGLLib.TrackAnimation(map, lines, opts)
+
+        document.getElementById("start").addEventListener("click", function () {
+            trackAnimation.start()
+        })
+        document.getElementById("cancel").addEventListener("click", function () {
+            trackAnimation.cancel()
+        })
+
+    </script>
+</body>
+
+</html>

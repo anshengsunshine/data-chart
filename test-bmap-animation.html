@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript"
+        src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=E4KWNrh8QmEXFOF0xaYahbokBPLWtHAE"></script>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+
+        .anchorBL,
+        .BMap_cpyCtrl {
+            display: none;
+        }
+
+        #tools {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <div id="tools">
+        <button id="start">开始 -播放- 动画</button>
+        <button id="cancel">停止 -播放- 动画</button>
+    </div>
+    <script>
+        // console.log(window.BMapGL)
+        var map = new BMapGL.Map('map')
+        var point = new BMapGL.Point(116.307092, 40.054922)
+        map.centerAndZoom(point, 20)
+        map.enableScrollWheelZoom(true)
+        map.setTilt(20)
+        map.setHeading(0)
+        var keyFrames = [{
+            center: new BMapGL.Point(116.307092, 40.054922),
+            zoom: 20,
+            tilt: 50,
+            heading: 0,
+            percentage: 0
+        }, {
+            center: new BMapGL.Point(116.307631, 40.055391),
+            zoom: 21,
+            tilt: 70,
+            heading: 0,
+            percentage: 0.1
+        }, {
+            center: new BMapGL.Point(116.306858, 40.057887),
+            zoom: 21,
+            tilt: 70,
+            heading: 0,
+            percentage: 0.25
+        }, {
+            center: new BMapGL.Point(116.306858, 40.057887),
+            zoom: 21,
+            tilt: 70,
+            heading: -90,
+            percentage: 0.35
+        }, {
+            center: new BMapGL.Point(116.307904, 40.058118),
+            zoom: 21,
+            tilt: 70,
+            heading: -90,
+            percentage: 0.45
+        }, {
+            center: new BMapGL.Point(116.307904, 40.058118),
+            zoom: 21,
+            tilt: 70,
+            heading: -180,
+            percentage: 0.55
+        }, {
+            center: new BMapGL.Point(116.308902, 40.055954),
+            zoom: 21,
+            tilt: 70,
+            heading: -180,
+            percentage: 0.75
+        }, {
+            center: new BMapGL.Point(116.308902, 40.055954),
+            zoom: 21,
+            tilt: 70,
+            heading: -180,
+            percentage: 0.85
+        }, {
+            center: new BMapGL.Point(116.307779, 40.055754),
+            zoom: 21,
+            tilt: 70,
+            heading: -360,
+            percentage: 0.95
+        }, {
+            center: new BMapGL.Point(116.307092, 40.054922),
+            zoom: 20,
+            tilt: 50,
+            heading: -360,
+            percentage: 1
+        },]
+        var opts = {
+            delay: 500,
+            duration: 5000,
+            interation: 1
+        }
+
+        var animation = new BMapGL.ViewAnimation(keyFrames, opts)
+
+        document.getElementById("start").addEventListener("click", function () {
+            map.startViewAnimation(animation)
+        })
+        document.getElementById("cancel").addEventListener("click", function () {
+            map.cancelViewAnimation(animation)
+        })
+
+        animation.addEventListener("animationstart", function () { 
+            console.log("animation---start")
+        })
+        animation.addEventListener("animationiterations", function () {
+            console.log("animation---iterations")
+         })
+        animation.addEventListener("animationend", function () {
+            console.log("animation---end")
+         })
+        animation.addEventListener("animationcancel", function () { 
+            console.log("animation---cancel")
+        })
+
+
+    </script>
+</body>
+
+</html>

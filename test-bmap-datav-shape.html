@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript"
+        src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=E4KWNrh8QmEXFOF0xaYahbokBPLWtHAE"></script>
+    <script type="text/javascript" src="https://mapv.baidu.com/gl/examples/static/common.js"></script>
+    <script src="https://mapv.baidu.com/build/mapv.min.js"></script>
+    <script src="https://code.bdstatic.com/npm/mapvgl@1.0.0-beta.119/dist/mapvgl.min.js"></script>
+    <script src="https://code.bdstatic.com/npm/mapvgl@1.0.0-beta.119/dist/mapvgl.threelayers.min.js"></script>
+    <!--  经纬度查询 墨卡托投影 ：  
+        http://api/map.baidu.com/geoconv/v1/?coords=114.21892734521,29.575429778924&from=1&to=6&ak=E4KWNrh8QmEXFOF0xaYahbokBPLWtHAE ； 
+        http://api.map.baidu.com/geocoder?location=39.990912172420714,116.32715863448607&coord_type=bd09mc&output=html&src=webapp.baidu.openAPIdemo ；
+        https://youbaobao.xyz/datav-res/examples/chongqing.json
+    -->
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #map_container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .anchorBL,
+        .BMap_cpyCtrl {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map_container"></div>
+    <script>
+
+        var map = initBMap()
+        initData().then(data => {
+            setData(map, data)
+        })
+
+
+        // 
+
+        // 初始化百度地图
+        function initBMap() {
+            var cityCenter = mapv.utilCityCenter.getCenterByCityName("北京")
+            var map = initMap({
+                center: [106.540547, 29.564858],
+                tilt: 80,
+                zoom: 17,
+                heading: -45.3,
+                // style: purpleStyle
+            })
+            return map
+        }
+
+        function initData() {
+            var data = []
+            return fetch('https://youbaobao.xyz/datav-res/examples/chongqing.json')
+                .then(res => res.json()).then(res => {
+                    console.log(res)
+                    var polygons = []
+                    var len = res.length
+                    for (var i = 0; i < len; i++) {
+                        var line = res[i]
+                        var polygon = []
+                        var pt = [line[i] * 512, line[2] * 512]
+                        for (var j = 3; j < line.length; j += 2) {
+                            pt[0] += line[j] / 100 / 2
+                            pt[1] += line[j + 1] / 100 / 2
+                            polygon.push([pt[0], pt[1]])
+                        }
+                        polygons.push({
+                            geometry: {
+                                type: "Polygeo",
+                                coordinates: [polygon]
+                            },
+                            properties: {
+                                height: line[0] / 2
+                            }
+                        })
+                    }
+                    console.log(polygons)
+                    return polygons
+                })
+        }
+
+        function setData(map, data) {
+            var view = new mapvgl.View({ map })
+            var shapeLayer = new mapvgl.ShapeLayer({
+                color: "rgba(194, 147, 75, 0.8)",
+                opacity: 0.3,
+                style: "normal",
+                blend: "lighter",
+                riseTime: 2000,
+                enablePicked: true,
+                selectedIndex: -1,
+                selectedColor: "red",
+                autoSelect: true,
+                onClick:(e)=>{
+                    console.log(e)
+                }
+            })
+
+            view.addLayer(shapeLayer)
+            shapeLayer.setData(data)
+        }
+
+
+    </script>
+</body>
+
+</html>

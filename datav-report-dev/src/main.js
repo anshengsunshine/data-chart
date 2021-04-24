@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import * as echarts from 'echarts'
+import * as echarts from 'echarts/lib/echarts'
 import "@/assets/style/main.scss";
 import VueEcharts from "vue-echarts";
 import './plugins/element.js'

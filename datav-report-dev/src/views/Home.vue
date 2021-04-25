@@ -12,6 +12,7 @@ import TopView from "@/components/topView";
 import SalesView from "@/components/salesView";
 import BottomView from "@/components/bottomView";
 import MapView from "@/components/mapView";
+import { wordColud } from "@/api/index";
 export default {
   name: "Home",
   components: {
@@ -19,6 +20,15 @@ export default {
     SalesView,
     BottomView,
     MapView,
+  },
+  mounted() {
+    wordColud().then((res) => {
+      console.log(res).catch((err) => {
+        console.log(err);
+      });
+    }).catch(err=>{
+      console.log(err)
+    })
   },
 };
 </script>

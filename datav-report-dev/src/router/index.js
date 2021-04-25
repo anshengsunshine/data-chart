@@ -8,11 +8,6 @@ const routes = [
     path: '/',
     name: 'Home',
     component: () => import(/* webpackChunkName: "home" */ '@/views/Home')
-  },
-  {
-    path: '/bmap',
-    name: 'BMap',
-    component: () => import(/* webpackChunkName: "bmap" */ '@/views/BMap')
   }
 ]
 

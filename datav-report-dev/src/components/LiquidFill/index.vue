@@ -20,6 +20,13 @@ export default {
         seriesMap: {
           rate: {
             redius: "80%",
+            label: {
+              normal: {
+                formatter: (v) => {
+                  return v.data.value;
+                },
+              },
+            },
           },
         },
       },

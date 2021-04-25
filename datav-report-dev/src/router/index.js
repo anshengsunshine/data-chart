@@ -13,12 +13,7 @@ const routes = [
     path: '/bmap',
     name: 'BMap',
     component: () => import(/* webpackChunkName: "bmap" */ '@/views/BMap')
-  },
-  {
-    path: '/2',
-    name: 'Liqquidfill',
-    component: () => import(/* webpackChunkName: "bmap" */ '@/views/Liqquidfill')
-  },
+  }
 ]
 
 const router = new VueRouter({

@@ -21,14 +21,33 @@ export default {
     BottomView,
     MapView,
   },
+  data() {
+    return {
+      reportData: ["nnn"],
+      wordCloudData: null,
+      mapData: null,
+    };
+  },
+  methods: {
+    getReportData() {
+      return this.reportData;
+    },
+  },
+  provide() {
+    return {
+      getReportData: this.getReportData,
+      wordCloudData: this.wordCloudData,
+      mapData: this.mapData,
+    };
+  },
   mounted() {
-    wordColud().then((res) => {
-      console.log(res).catch((err) => {
+    wordColud()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
         console.log(err);
       });
-    }).catch(err=>{
-      console.log(err)
-    })
   },
 };
 </script>

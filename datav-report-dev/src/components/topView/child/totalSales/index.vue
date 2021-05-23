@@ -17,15 +17,23 @@
     <template v-slot:footer>
       <span>昨日销售额</span>
       <span class="emphasis">￥ 30,000,000</span>
+      <div>reportData:{{data}}</div>
     </template>
   </common-card>
 </template>
 
 <script>
 import commonCardMixin from "@/components/mixins/commonCardMixin.js";
+import commonDataMixin from "@/components/mixins/commonDataMixin.js";
 export default {
   name: "TotalSales",
-  mixins: [commonCardMixin],
+  mixins: [commonCardMixin,commonDataMixin],
+  // computed:{
+  //   data(){
+  //     return this.getReportData()
+  //   }
+  // },
+  // inject:['getReportData'],
 };
 </script>
 

@@ -1,0 +1,15 @@
+{
+  "name": "datav-libs-dev",
+  "version": "1.0.0",
+  "description": "datav libs components",
+  "main": "index.js",
+  "scripts": {
+    "dev": "rollup "
+  },
+  "keywords": [],
+  "author": "ansheng <646143658@qq.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "rollup": "^2.50.5"
+  }
+}

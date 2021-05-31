@@ -4,7 +4,7 @@
   "description": "datav libs components",
   "main": "index.js",
   "scripts": {
-    "dev": "rollup "
+    "dev": "rollup -c rollup.config.dev.js"
   },
   "keywords": [],
   "author": "ansheng <646143658@qq.com>",

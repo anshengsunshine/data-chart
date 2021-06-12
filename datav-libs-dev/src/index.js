@@ -1,3 +1,3 @@
-console.log("hrllo,组件库")
+console.log("hrllo,组件库!!!!!")
 
 export default {}

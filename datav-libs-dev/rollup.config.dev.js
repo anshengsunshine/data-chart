@@ -1,13 +1,21 @@
 const path = require('path')
 
 const inputPath = path.resolve(__dirname, './src/index.js')
-const outputPath = path.resolve(__dirname, './dist/datv.libs.js')
+const outputUmdPath = path.resolve(__dirname, './dist/datv.libs.js')
+const outputEsPath = path.resolve(__dirname, './dist/datv.libs.es.js')
 
 module.exports = {
     input: inputPath,  // 输入路径
-    output: {
-        file: outputPath,  // 输出路径
-        format:'umd',  //输出的模块协议
-        name:"DatavLibs"  // 名字
-    }
+    output: [
+        {
+            file: outputUmdPath,  // 输出路径
+            format:'umd',  //输出的模块协议
+            name:"DatavLibsA"  // 名字
+        },
+        {
+            file: outputEsPath,  // 输出路径
+            format:'es',  //输出的模块协议
+            name:"DatavLibsB"  // 名字
+        }
+    ]
 }

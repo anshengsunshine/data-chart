@@ -1,4 +1,5 @@
 const path = require('path')
+const resolve = require("rollup-plugin-node-resolve")
 
 const inputPath = path.resolve(__dirname, './src/index.js')
 const outputUmdPath = path.resolve(__dirname, './dist/datv.libs.js')
@@ -17,5 +18,8 @@ module.exports = {
             format:'es',  //输出的模块协议
             name:"DatavLibsB"  // 名字
         }
+    ],
+    plugins:[
+        resolve()
     ]
 }

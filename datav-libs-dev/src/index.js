@@ -1,13 +1,5 @@
-// import * as data from "sam-test-data";
-import { random, a, b } from "sam-test-data";  //解构的方式
+import { random } from "./plugin";
 
-// console.log(data.random(100),data.a,data.b)
-console.log(random(100), a, b)
+console.log(random())
 
-export default random
-
-// const data = require("sam-test-data")
-
-// console.log(data.random(),data.a,data.b)
-
-// module.exports = {}
+export default data.default.random;

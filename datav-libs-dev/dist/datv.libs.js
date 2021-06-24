@@ -1,11 +1,14 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('sam-test-data')) :
-	typeof define === 'function' && define.amd ? define(['sam-test-data'], factory) :
-	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.DatavLibsA = factory(global.samTestData));
-}(this, (function (samTestData) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.DatavLibsA = factory());
+}(this, (function () { 'use strict';
 
-	console.log(samTestData.random(100));
+	const a = 1;
+	var cjs = a;
 
-	return samTestData.random;
+	console.log(cjs);
+
+	return cjs;
 
 })));

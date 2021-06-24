@@ -1,4 +1,6 @@
-import { random } from 'sam-test-data';
-export { random as default } from 'sam-test-data';
+const a = 1;
+var cjs = a;
 
-console.log(random(100));
+console.log(cjs);
+
+export default cjs;

@@ -1,5 +1,5 @@
-import { random } from "sam-test-data";
+import data from "./cjs";
 
-console.log(random(100))
+console.log(data)
 
-export default random;
+export default data;

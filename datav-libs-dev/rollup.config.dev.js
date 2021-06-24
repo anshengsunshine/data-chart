@@ -1,5 +1,6 @@
 const path = require('path')
 const resolve = require("rollup-plugin-node-resolve")
+const commonjs = require("rollup-plugin-commonjs")
 
 const inputPath = path.resolve(__dirname, './src/index.js')
 const outputUmdPath = path.resolve(__dirname, './dist/datv.libs.js')
@@ -20,7 +21,8 @@ module.exports = {
         }
     ],
     plugins:[
-        resolve()
+        resolve(),
+        commonjs()
     ],
     external:[
         'sam-test-data'

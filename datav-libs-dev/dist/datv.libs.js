@@ -4,11 +4,10 @@
 	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.DatavLibsA = factory());
 }(this, (function () { 'use strict';
 
-	const a = 1;
-	var cjs = a;
+	var a = 1;
 
-	console.log(cjs);
+	console.log(a);
 
-	return cjs;
+	return a;
 
 })));

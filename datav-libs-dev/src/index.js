@@ -1,5 +1,5 @@
-import data from "./cjs";
+import { a } from "./cjs";
 
-console.log(data)
+console.log(a)
 
-export default data;
+export default a;

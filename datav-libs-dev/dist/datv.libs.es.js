@@ -1,6 +1,5 @@
-const a = 1;
-var cjs = a;
+var a = 1;
 
-console.log(cjs);
+console.log(a);
 
-export default cjs;
+export default a;

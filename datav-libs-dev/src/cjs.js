@@ -1,2 +1,2 @@
-const a = 1;
-module.exports = a;
+exports.a = 1;
+exports.b = 2;

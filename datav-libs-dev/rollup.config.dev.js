@@ -21,5 +21,8 @@ module.exports = {
     ],
     plugins:[
         resolve()
+    ],
+    external:[
+        'sam-test-data'
     ]
 }

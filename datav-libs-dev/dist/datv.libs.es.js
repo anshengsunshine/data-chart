@@ -1,9 +1,4 @@
-function random() {
-    console.log("random");
-}
+import { random } from 'sam-test-data';
+export { random as default } from 'sam-test-data';
 
-console.log(random());
-
-var index = data.default.random;
-
-export default index;
+console.log(random(100));

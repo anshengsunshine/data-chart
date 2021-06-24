@@ -1,5 +1,5 @@
-import { random } from "./plugin";
+import { random } from "sam-test-data";
 
-console.log(random())
+console.log(random(100))
 
-export default data.default.random;
+export default random;

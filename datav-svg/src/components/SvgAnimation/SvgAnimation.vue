@@ -124,7 +124,7 @@ export default {
   setup(){
     onMounted(()=>{
       const logo = document.getElementsByClassName("logo")[0]
-      console.log(logo.getTotalLength())
+      console.log("获取logo周长",logo.getTotalLength())
     })
   }
 };

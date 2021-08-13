@@ -154,6 +154,17 @@
           repeatCount="2"
           fill="freeze"
         ></animate>
+        <animateTransform
+          attributeName="transform"
+          attributeType="XML"
+          begin="0"
+          dur="2s"
+          type="scale"
+          from="1"
+          to="2"
+          repeatCount="2"
+          fill="freeze"
+        ></animateTransform>
       </circle>
     </svg>
   </div>

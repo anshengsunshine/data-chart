@@ -124,6 +124,53 @@
       </rect>
     </svg>
   </div>
+  <div class="container">
+    <svg width="200" height="200">
+      <circle cx="0" cy="0" r="30" fill="blue" stroke="black" stroke-width="1">
+        <animate
+          attributeName="cx"
+          attributeType="XML"
+          from="0"
+          to="100"
+          dur="2s"
+          repeatCount="2"
+          fill="freeze"
+        ></animate>
+        <animate
+          attributeName="cy"
+          attributeType="XML"
+          from="0"
+          to="50 "
+          dur="2s"
+          repeatCount="2"
+          fill="freeze"
+        ></animate>
+        <animate
+          attributeName="fill"
+          attributeType="XML"
+          from="blue"
+          to="red"
+          dur="2s"
+          repeatCount="2"
+          fill="freeze"
+        ></animate>
+      </circle>
+    </svg>
+  </div>
+  <div class="container">
+    <svg width="400" height="400">
+      <polygon points="30 30 70 30 90 70 10 70" fill="#fcc" stroke="black">
+        <animate
+          attributeName="points"
+          attributeType="XML"
+          to="50 30 70 50 50 90 30 50"
+          dur="5s"
+          fill="freeze"
+          repeatCount="1"
+        />
+      </polygon>
+    </svg>
+  </div>
 </template>
 
 <script>

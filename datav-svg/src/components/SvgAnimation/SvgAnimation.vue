@@ -115,18 +115,27 @@
       ></line>
     </svg>
   </div>
+  <div class="container">
+    <svg width="200" height="200">
+      <rect x="0" y="0" fill="red" width="100" height="50">
+        <set attributeName="x" attributeType="XML" to="10" begin="1s"></set>
+        <set attributeName="x" attributeType="XML" to="20" begin="2s"></set>
+        <set attributeName="fill" attributeType="XML" to="blue" begin="3s"></set>
+      </rect>
+    </svg>
+  </div>
 </template>
 
 <script>
-import { onMounted } from '@vue/runtime-core';
+import { onMounted } from "@vue/runtime-core";
 export default {
   name: "SvgAnimation",
-  setup(){
-    onMounted(()=>{
-      const logo = document.getElementsByClassName("logo")[0]
-      console.log("获取logo周长",logo.getTotalLength())
-    })
-  }
+  setup() {
+    onMounted(() => {
+      const logo = document.getElementsByClassName("logo")[0];
+      console.log("获取logo周长", logo.getTotalLength());
+    });
+  },
 };
 </script>
 <style lang="less" scoped>
@@ -170,22 +179,22 @@ export default {
 
 @keyframes logo {
   0% {
-    fill:white;
-    stroke:#333;
+    fill: white;
+    stroke: #333;
     stroke-dasharray: 6024;
     stroke-dashoffset: 6024;
   }
   50% {
-    fill:white;
-    stroke:#333;
+    fill: white;
+    stroke: #333;
     stroke-dasharray: 6024;
     stroke-dashoffset: 0;
   }
-  75%{
-    fill:red;
+  75% {
+    fill: red;
   }
-  100%{
-    fill:blue
+  100% {
+    fill: blue;
   }
 }
 

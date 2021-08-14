@@ -182,6 +182,63 @@
       </polygon>
     </svg>
   </div>
+  <div class="container">
+    <svg width="200" height="200">
+      <rect x="0" y="0" fill="red" width="10" height="10">
+        <animateMotion
+          path="M10 10 L110 10 L110 110 L10 110 Z"
+          dur="5s"
+          rotate="0"
+          repeatCount="2"
+          fill="freeze"
+        ></animateMotion>
+      </rect>
+      <path d="M10 10 L110 10 L110 110 L10 110 Z" fill="none" stroke="green"></path>
+    </svg>
+  </div>
+  <div class="container">
+    <svg width="200" height="200">
+      <rect x="0" y="0" fill="red" width="10" height="10">
+        <animateMotion
+          id="forward-rect"
+          path="M10 10 L110 10 L110 110 L10 110 "
+          dur="3s"
+          rotate="0"
+          fill="freeze"
+          begin="0; backward-rect.end + 0.5s"
+        ></animateMotion>
+        <animateMotion
+          id="backward-rect"
+          path="M10 110 L110 110 L110 10 L10 10 "
+          dur="3s"
+          rotate="0"
+          fill="freeze"
+          begin="forward-rect.end + 0.5s"
+        ></animateMotion>
+        <animate
+          id="red-to-blue"
+          attributeName="fill"
+          attributeType="XML"
+          from="red"
+          to="blue"
+          dur="3s"
+          fill="freeze"
+          begin="0; blue-to-red.end + 0.5s"
+        ></animate>
+        <animate
+          id="blue-to-red"
+          attributeName="fill"
+          attributeType="XML"
+          from="blue"
+          to="red"
+          dur="3s"
+          fill="freeze"
+          begin="red-to-blue.end + 0.5s"
+        ></animate>
+      </rect>
+      <path d="M10 10 L110 10 L110 110 L10 110 " fill="none" stroke="green"></path>
+    </svg>
+  </div>
 </template>
 
 <script>

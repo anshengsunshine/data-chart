@@ -2,13 +2,20 @@
   <div class="flexBox_wrap" :ref="refName">
     <svg :width="width" :height="height">
       <defs>
-        <path id="fly-box-path" :d="path" fill="none"></path>
-        <radialGradient id="radial-gradient" cx="50%" cy="50%" fx="100%" fy="50%" r="50%">
+        <path :id="pathId" :d="path" fill="none"></path>
+        <radialGradient
+          :id="radialGradientId"
+          cx="50%"
+          cy="50%"
+          fx="100%"
+          fy="50%"
+          r="50%"
+        >
           <stop offset="0%" stop-color="#fff" stop-opacity="1"></stop>
           <stop offset="100%" stop-color="#fff" stop-opacity="0"></stop>
         </radialGradient>
-        <mask id="fly-box-mask">
-          <circle :r="starLength" cx="0" cy="0" fill="url(#radial-gradient)">
+        <mask :id="maskId">
+          <circle :r="starLength" cx="0" cy="0" :fill="`url(#${radialGradientId})`">
             <animateMotion
               :dur="`${duration}s`"
               :path="path"
@@ -18,12 +25,12 @@
           </circle>
         </mask>
       </defs>
-      <use href="#fly-box-path" stroke-width="1" :stroke="lineColor"></use>
+      <use :href="`#${pathId}`" stroke-width="1" :stroke="lineColor"></use>
       <use
-        href="#fly-box-path"
+        :href="`#${pathId}`"
         stroke-width="3"
         :stroke="starColor"
-        mask="url(#fly-box-mask)"
+        :mask="`url(#${maskId})`"
       ></use>
     </svg>
     <div class="flyBox_content">
@@ -35,6 +42,7 @@
 <script>
 import { ref } from "@vue/reactivity";
 import { computed, getCurrentInstance, onMounted } from "@vue/runtime-core";
+import { v4 as uuidv4 } from "uuid";
 export default {
   name: "FlyBoxComp",
   props: {
@@ -56,9 +64,13 @@ export default {
     },
   },
   setup(props) {
+    const uuid = uuidv4();
     const width = ref(0);
     const height = ref(0);
     const refName = "flyBox";
+    const pathId = `${refName}-path-${uuid}`;
+    const radialGradientId = `${refName}-gradient-${uuid}`;
+    const maskId = `${refName}-mask-${uuid}`;
     const path = computed(
       () =>
         `M5 5 L${width.value - 5} 5 L${width.value - 5} ${height.value - 5} L5 ${
@@ -82,6 +94,9 @@ export default {
       height,
       refName,
       path,
+      pathId,
+      radialGradientId,
+      maskId,
     };
   },
 };

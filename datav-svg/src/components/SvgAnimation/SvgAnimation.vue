@@ -277,16 +277,33 @@
       </rect>
     </svg>
   </div>
-  <div class="container">
+  <div class="container bg_333">
     <svg width="400" height="400">
       <defs>
         <mask id="test-mask">
           <rect x="5" y="5" width="390" height="390" fill="red"></rect>
           <circle r="50" cx="50" cy="50"></circle>
         </mask>
+        <linearGradient id="test-linear-gradient">
+          <stop offset="0%" stop-color="red" stop-opacity="1"></stop>
+          <stop offset="50%" stop-color="green"></stop>
+          <stop offset="100%" stop-color="blue" stop-opacity="0.5"></stop>
+        </linearGradient>
+        <radialGradient
+          id="test-radial-gradient"
+          cx="50%"
+          cy="50%"
+          fx="50%"
+          fy="50%"
+          r="50%"
+        >
+          <stop offset="0%" stop-color="#fff" stop-opacity="1"></stop>
+          <stop offset="100%" stop-color="#fff" stop-opacity="0"></stop>
+        </radialGradient>
       </defs>
-      <rect x="5" y="5" width="390" height="390" fill="red"></rect>
-      <rect x="5" y="5" width="390" height="390" fill="blue" mask="url(#test-mask)"></rect>
+      <!-- <rect x="5" y="5" width="390" height="390" fill="url(#test-linear-gradient)"></rect> -->
+      <circle cx="200" cy="200" r="200" fill="url(#test-radial-gradient)"></circle>
+      <!-- <rect x="5" y="5" width="390" height="390" fill="blue" mask="url(#test-mask)"></rect> -->
     </svg>
   </div>
 </template>
@@ -374,5 +391,8 @@ export default {
       stroke-dashoffset: 0;
     }
   }
+}
+.bg_333{
+  background-color: #333;
 }
 </style>

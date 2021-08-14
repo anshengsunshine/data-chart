@@ -29,7 +29,13 @@ const routes = [
     path: "/loading",
     name: "Loading",
     component: () =>
-      import(/* webpackChunkName: "test1" */ "../views/Loading.vue"),
+      import(/* webpackChunkName: "Loading" */ "../views/Loading.vue"),
+  },
+  {
+    path: "/FlyBox",
+    name: "FlyBox",
+    component: () =>
+      import(/* webpackChunkName: "FlyBox" */ "../views/FlyBox.vue"),
   },
 ];
 

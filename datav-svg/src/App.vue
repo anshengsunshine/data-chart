@@ -4,7 +4,8 @@
     <router-link to="/Icon">Icon</router-link> |
     <router-link to="/test1">Test1</router-link> |
     <router-link to="/test_Animation">Test_Animation</router-link> |
-    <router-link to="/loading">Loading</router-link> |
+    <router-link to="/loading">Loading</router-link> | 
+    <router-link to="/FlyBox">FlyBox</router-link> | 
   </div>
   <router-view />
 </template>

@@ -57,7 +57,7 @@
         />
       </circle>
     </svg>
-    <div class="loading_txt">
+    <div class="loading_content">
       <slot></slot>
     </div>
   </div>

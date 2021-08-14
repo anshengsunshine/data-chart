@@ -239,6 +239,44 @@
       <path d="M10 10 L110 10 L110 110 L10 110 " fill="none" stroke="green"></path>
     </svg>
   </div>
+  <div class="container">
+    <svg viewBox="0 0 200 200" width="200" height="200">
+      <g id="rect1">
+        <rect x="0" y="0" rx="0" ry="0" width="100" height="100" fill="red">
+          <animate
+            attributeType="XML"
+            attributeName="fill"
+            from="red"
+            to="green"
+            begin="rect1.click"
+            dur="2s"
+            fill="freeze"
+          />
+        </rect>
+      </g>
+      <animateTransform
+        attributeType="XML"
+        attributeName="transform"
+        type="translate"
+        from="0, 0"
+        to="50, 50"
+        begin="rect1.click"
+        dur="2s"
+        fill="freeze"
+      />
+      <rect x="0" y="100" width="100" height="100" fill="blue">
+        <animate
+          attributeType="XML"
+          attributeName="fill"
+          from="blue"
+          to="green"
+          begin="rect1.click"
+          dur="2s"
+          fill="freeze"
+        />
+      </rect>
+    </svg>
+  </div>
 </template>
 
 <script>

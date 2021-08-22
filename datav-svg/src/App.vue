@@ -1,5 +1,5 @@
 <template>
-  <div id="nav">
+  <!-- <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/Icon">Icon</router-link> |
     <router-link to="/test1">Test1</router-link> |
@@ -7,16 +7,20 @@
     <router-link to="/loading">Loading</router-link> | 
     <router-link to="/FlyBox">FlyBox</router-link> | 
   </div>
-  <router-view />
+  <router-view /> -->
+  <container-comp :options="{ width: 3840, height: 2160 }">
+    <div class="test">777777</div>
+  </container-comp>
 </template>
 
 <style lang="less">
+html,
+body,
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 #nav {
@@ -30,5 +34,10 @@
       color: #42b983;
     }
   }
+}
+.test {
+  font-size: 14px;
+  color: #f00;
+  transform: scale(0.5);
 }
 </style>

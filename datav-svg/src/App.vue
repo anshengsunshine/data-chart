@@ -36,7 +36,7 @@ body,
   }
 }
 .test {
-  font-size: 14px;
+  font-size: 140px;
   color: #f00;
   transform: scale(0.5);
 }

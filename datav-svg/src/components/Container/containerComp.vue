@@ -6,6 +6,7 @@
 
 <script>
 import { getCurrentInstance, onMounted, onUnmounted, ref } from "@vue/runtime-core";
+import { debounce } from "@/utils/index";
 export default {
   name: "containerComp",
   props: {
@@ -64,6 +65,7 @@ export default {
 
     // 视口改变时，更改压缩比
     const onResize = () => {
+      console.log("onResize");
       initSize();
       updateScale();
     };
@@ -73,11 +75,10 @@ export default {
       initSize();
       updateSize();
       updateScale();
-      window.addEventListener("resize", onResize);
+      window.addEventListener("resize", debounce(100,onResize));
     });
 
     onUnmounted(() => {
-      console.log("11111")
       window.removeEventListener("resize", onResize);
     });
     console.log(require("vue"));
@@ -91,7 +92,7 @@ export default {
       initSize,
       updateSize,
       updateScale,
-      onResize
+      onResize,
     };
   },
 };

@@ -5,10 +5,16 @@
 </template>
 
 <script>
-import { getCurrentInstance, onMounted, onUnmounted, ref } from "@vue/runtime-core";
+import {
+  getCurrentInstance,
+  nextTick,
+  onMounted,
+  onUnmounted,
+  ref,
+} from "@vue/runtime-core";
 import { debounce } from "@/utils/index";
 export default {
-  name: "containerComp",
+  name: "ContainerComp",
   props: {
     options: Object,
   },
@@ -21,21 +27,31 @@ export default {
     let context, dom;
 
     const initSize = () => {
-      dom = context.refs[refName];
-      // 获取大屏的真实尺寸
-      if (props.options && props.options.width && props.options.height) {
-        width.value = props.options.width;
-        height.value = props.options.height;
-      } else {
-        width.value = dom.clientWidth;
-        height.value = dom.clientHeight;
-      }
-      // 获取画布尺寸
-      if (!originalWidth.value || !originalHeight.value) {
-        originalWidth.value = window.screen.width;
-        originalHeight.value = window.screen.height;
-      }
-      console.log(width.value, height.value, originalWidth.value, originalHeight.value);
+      return new Promise((resolve) => {
+        nextTick(() => {
+          dom = context.refs[refName];
+          // 获取大屏的真实尺寸
+          if (props.options && props.options.width && props.options.height) {
+            width.value = props.options.width;
+            height.value = props.options.height;
+          } else {
+            width.value = dom.clientWidth;
+            height.value = dom.clientHeight;
+          }
+          // 获取画布尺寸
+          if (!originalWidth.value || !originalHeight.value) {
+            originalWidth.value = window.screen.width;
+            originalHeight.value = window.screen.height;
+          }
+          console.log(
+            width.value,
+            height.value,
+            originalWidth.value,
+            originalHeight.value
+          );
+          resolve();
+        });
+      });
     };
 
     // 分辨率 计算
@@ -64,18 +80,18 @@ export default {
     };
 
     // 视口改变时，更改压缩比
-    const onResize = () => {
+    const onResize = async () => {
       console.log("onResize");
-      initSize();
+      await initSize();
       updateScale();
     };
 
-    onMounted(() => {
+    onMounted(async () => {
       context = getCurrentInstance();
-      initSize();
+      await initSize();
       updateSize();
       updateScale();
-      window.addEventListener("resize", debounce(100,onResize));
+      window.addEventListener("resize", debounce(100, onResize));
     });
 
     onUnmounted(() => {

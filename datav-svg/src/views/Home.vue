@@ -5,12 +5,8 @@
 </template>
 
 <script>
-import Test from "@/components/Test/Test.vue";
 export default {
   name: "Home",
-  components: {
-    Test,
-  },
 };
 </script>
 <style scoped>

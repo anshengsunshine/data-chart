@@ -1,6 +1,6 @@
 <template>
   <div class="test_one" :style="{ width: '20px', height: '20px' }">
-    <test1-comp />
+    <test-comp />
     <svg width="50" height="50" style="color: #f00">
       <use href="#more"></use>
     </svg>
@@ -14,12 +14,8 @@
 </template>
 
 <script>
-import Test1Comp from "@/components/Test1/Test1Comp.vue";
 export default {
   name: "Test_one",
-  components: {
-    Test1Comp,
-  },
 };
 </script>
 <style>

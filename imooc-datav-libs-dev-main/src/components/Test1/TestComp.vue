@@ -59,7 +59,7 @@
 
 <script>
 export default {
-  name: "Test1",
+  name: "TestComp",
 };
 </script>
 

@@ -8,9 +8,11 @@
     <router-link to="/FlyBox">FlyBox</router-link> | 
   </div>
   <router-view /> -->
+  <!-- <test-component /> -->
   <container-comp :options="{ width: 3840, height: 2160 }">
     <div class="test">777777</div>
   </container-comp>
+  <div class="test">888888</div>
 </template>
 
 <style lang="less">

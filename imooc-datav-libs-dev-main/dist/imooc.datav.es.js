@@ -1,5 +1,5 @@
-import { ref, computed, pushScopeId, popScopeId, openBlock, createBlock, createVNode, toDisplayString, withScopeId, renderSlot } from 'vue';
-import { ref as ref$1, onMounted, onUnmounted, nextTick, getCurrentInstance } from '@vue/runtime-core';
+import { ref, computed, pushScopeId, popScopeId, openBlock, createBlock, createVNode, toDisplayString, withScopeId, renderSlot, createCommentVNode } from 'vue';
+import { ref as ref$1, onMounted, onUnmounted, getCurrentInstance, nextTick } from '@vue/runtime-core';
 import { debounce } from '@/utils/index';
 
 var script$1 = {
@@ -130,7 +130,8 @@ var script = {
 
     var originalHeight = ref$1(0); //视口区域 - 高
 
-    var context, dom;
+    var ready = ref$1(false);
+    var context, dom, observer;
 
     var initSize = function initSize() {
       return new Promise(function (resolve) {
@@ -184,12 +185,12 @@ var script = {
 
 
     var onResize = /*#__PURE__*/function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(e) {
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log("onResize");
+                console.log("onResize", e);
                 _context.next = 3;
                 return initSize();
 
@@ -204,26 +205,48 @@ var script = {
         }, _callee);
       }));
 
-      return function onResize() {
+      return function onResize(_x) {
         return _ref.apply(this, arguments);
       };
-    }();
+    }(); // 属性变更时，调用 mutationObserver 进行监听改变
+
+
+    var initMutationObserver = function initMutationObserver() {
+      var MutationObserver = window.MutationObserver;
+      observer = new MutationObserver(onResize);
+      observer.observe(dom, {
+        attributes: true,
+        attributeFilter: ["style"],
+        attributeOldValue: true
+      });
+    };
+
+    var removeMutationObserver = function removeMutationObserver() {
+      if (observer) {
+        observer.disconnect();
+        observer.takeRecords();
+        observer = null;
+      }
+    };
 
     onMounted( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
       return regeneratorRuntime.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
+              ready.value = false;
               context = getCurrentInstance();
-              _context2.next = 3;
+              _context2.next = 4;
               return initSize();
 
-            case 3:
+            case 4:
               updateSize();
               updateScale();
               window.addEventListener("resize", debounce(100, onResize));
+              initMutationObserver();
+              ready.value = true;
 
-            case 6:
+            case 9:
             case "end":
               return _context2.stop();
           }
@@ -232,18 +255,12 @@ var script = {
     })));
     onUnmounted(function () {
       window.removeEventListener("resize", onResize);
+      removeMutationObserver();
     });
     console.log(require("vue"));
     return {
       refName: refName,
-      width: width,
-      height: height,
-      originalWidth: originalWidth,
-      originalHeight: originalHeight,
-      initSize: initSize,
-      updateSize: updateSize,
-      updateScale: updateScale,
-      onResize: onResize
+      ready: ready
     };
   }
 };
@@ -252,7 +269,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock("div", {
     id: "container_wrap",
     ref: $setup.refName
-  }, [renderSlot(_ctx.$slots, "default")], 512
+  }, [$setup.ready ? renderSlot(_ctx.$slots, "default", {
+    key: 0
+  }) : createCommentVNode("v-if", true)], 512
   /* NEED_PATCH */
   );
 }

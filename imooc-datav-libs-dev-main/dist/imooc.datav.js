@@ -132,7 +132,8 @@
 
       var originalHeight = runtimeCore.ref(0); //视口区域 - 高
 
-      var context, dom;
+      var ready = runtimeCore.ref(false);
+      var context, dom, observer;
 
       var initSize = function initSize() {
         return new Promise(function (resolve) {
@@ -186,12 +187,12 @@
 
 
       var onResize = /*#__PURE__*/function () {
-        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(e) {
           return regeneratorRuntime.wrap(function _callee$(_context) {
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
-                  console.log("onResize");
+                  console.log("onResize", e);
                   _context.next = 3;
                   return initSize();
 
@@ -206,26 +207,48 @@
           }, _callee);
         }));
 
-        return function onResize() {
+        return function onResize(_x) {
           return _ref.apply(this, arguments);
         };
-      }();
+      }(); // 属性变更时，调用 mutationObserver 进行监听改变
+
+
+      var initMutationObserver = function initMutationObserver() {
+        var MutationObserver = window.MutationObserver;
+        observer = new MutationObserver(onResize);
+        observer.observe(dom, {
+          attributes: true,
+          attributeFilter: ["style"],
+          attributeOldValue: true
+        });
+      };
+
+      var removeMutationObserver = function removeMutationObserver() {
+        if (observer) {
+          observer.disconnect();
+          observer.takeRecords();
+          observer = null;
+        }
+      };
 
       runtimeCore.onMounted( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
         return regeneratorRuntime.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
+                ready.value = false;
                 context = runtimeCore.getCurrentInstance();
-                _context2.next = 3;
+                _context2.next = 4;
                 return initSize();
 
-              case 3:
+              case 4:
                 updateSize();
                 updateScale();
                 window.addEventListener("resize", index$1.debounce(100, onResize));
+                initMutationObserver();
+                ready.value = true;
 
-              case 6:
+              case 9:
               case "end":
                 return _context2.stop();
             }
@@ -234,18 +257,12 @@
       })));
       runtimeCore.onUnmounted(function () {
         window.removeEventListener("resize", onResize);
+        removeMutationObserver();
       });
       console.log(require("vue"));
       return {
         refName: refName,
-        width: width,
-        height: height,
-        originalWidth: originalWidth,
-        originalHeight: originalHeight,
-        initSize: initSize,
-        updateSize: updateSize,
-        updateScale: updateScale,
-        onResize: onResize
+        ready: ready
       };
     }
   };
@@ -254,7 +271,9 @@
     return vue.openBlock(), vue.createBlock("div", {
       id: "container_wrap",
       ref: $setup.refName
-    }, [vue.renderSlot(_ctx.$slots, "default")], 512
+    }, [$setup.ready ? vue.renderSlot(_ctx.$slots, "default", {
+      key: 0
+    }) : vue.createCommentVNode("v-if", true)], 512
     /* NEED_PATCH */
     );
   }

@@ -1,6 +1,8 @@
 <template>
   <div id="container_wrap" :ref="refName">
-    <slot></slot>
+    <template v-if="ready">
+      <slot></slot>
+    </template>
   </div>
 </template>
 
@@ -24,7 +26,8 @@ export default {
     const height = ref(0); // 可视 - 高
     const originalWidth = ref(0); //视口区域 - 宽
     const originalHeight = ref(0); //视口区域 - 高
-    let context, dom;
+    const ready = ref(false);
+    let context, dom, observer;
 
     const initSize = () => {
       return new Promise((resolve) => {
@@ -80,35 +83,51 @@ export default {
     };
 
     // 视口改变时，更改压缩比
-    const onResize = async () => {
-      console.log("onResize");
+    const onResize = async (e) => {
+      console.log("onResize", e);
       await initSize();
       updateScale();
     };
 
+    // 属性变更时，调用 mutationObserver 进行监听改变
+    const initMutationObserver = () => {
+      const MutationObserver = window.MutationObserver;
+      observer = new MutationObserver(onResize);
+      observer.observe(dom, {
+        attributes: true,
+        attributeFilter: ["style"],
+        attributeOldValue: true,
+      });
+    };
+
+    const removeMutationObserver = () => {
+      if (observer) {
+        observer.disconnect();
+        observer.takeRecords();
+        observer = null;
+      }
+    };
+
     onMounted(async () => {
+      ready.value = false;
       context = getCurrentInstance();
       await initSize();
       updateSize();
       updateScale();
       window.addEventListener("resize", debounce(100, onResize));
+      initMutationObserver();
+      ready.value = true;
     });
 
     onUnmounted(() => {
       window.removeEventListener("resize", onResize);
+      removeMutationObserver();
     });
     console.log(require("vue"));
 
     return {
       refName,
-      width,
-      height,
-      originalWidth,
-      originalHeight,
-      initSize,
-      updateSize,
-      updateScale,
-      onResize,
+      ready,
     };
   },
 };

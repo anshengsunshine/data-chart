@@ -105,7 +105,7 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style scoped>
 .loading_wrap {
   svg {
     border: 1px solid #333;

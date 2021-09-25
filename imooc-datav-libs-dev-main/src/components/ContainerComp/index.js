@@ -1,4 +1,4 @@
-import ContainerComp from "./ContainerComp.vue"
+import ContainerComp from "./index.vue"
 export default function (Vue) {
     Vue.component(ContainerComp.name, ContainerComp)
 }

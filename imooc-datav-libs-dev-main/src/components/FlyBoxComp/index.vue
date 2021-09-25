@@ -102,23 +102,23 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style scoped>
 .flexBox_wrap {
   position: relative;
   width: 100%;
   height: 100%;
-  svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  .flyBox_content {
-    padding: 5px;
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-  }
+}
+.flexBox_wrap svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.flexBox_wrap .flyBox_content {
+  padding: 5px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 </style>

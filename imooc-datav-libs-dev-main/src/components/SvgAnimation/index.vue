@@ -320,7 +320,7 @@ export default {
   },
 };
 </script>
-<style lang="less" scoped>
+<style scoped>
 .container {
   svg {
     border: 1px solid #333;

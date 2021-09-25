@@ -119,6 +119,7 @@ export default {
       ready.value = true;
     });
 
+    
     onUnmounted(() => {
       window.removeEventListener("resize", onResize);
       removeMutationObserver();

@@ -32,10 +32,16 @@ const routes = [
       import(/* webpackChunkName: "Loading" */ "../views/Loading.vue"),
   },
   {
-    path: "/FlyBox",
-    name: "FlyBox",
+    path: "/FlyCom",
+    name: "FlyCom",
     component: () =>
-      import(/* webpackChunkName: "FlyBox" */ "../views/FlyBox.vue"),
+      import(/* webpackChunkName: "FlyBox" */ "../views/FlyCom.vue"),
+  },
+  {
+    path: "/CompsUse",
+    name: "CompsUse",
+    component: () =>
+      import(/* webpackChunkName: "CompsUse" */ "../views/CompsUse.vue"),
   },
 ];
 

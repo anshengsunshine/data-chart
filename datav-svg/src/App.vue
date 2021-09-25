@@ -1,18 +1,18 @@
 <template>
-  <!-- <div id="nav">
+  <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/Icon">Icon</router-link> |
     <router-link to="/test1">Test1</router-link> |
     <router-link to="/test_Animation">Test_Animation</router-link> |
     <router-link to="/loading">Loading</router-link> | 
-    <router-link to="/FlyBox">FlyBox</router-link> | 
+    <router-link to="/FlyCom">FlyCom</router-link> | 
+    <router-link to="/CompsUse">CompsUse</router-link> | 
   </div>
-  <router-view /> -->
+  <router-view />
   <!-- <test-component /> -->
-  <container-comp :options="{ width: 3840, height: 2160 }">
+  <!-- <container-comp :options="{ width: 3840, height: 2160 }">
     <div class="test">777777</div>
-  </container-comp>
-  <div class="test">888888</div>
+  </container-comp> -->
 </template>
 
 <style lang="less">

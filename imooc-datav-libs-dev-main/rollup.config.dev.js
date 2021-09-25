@@ -44,6 +44,7 @@ module.exports = {
   // 模块为外部变量进行引用,也就是在bulid时以外部模块的形式导入
   // 打包时代码不会一起打包进去
   external: [
-    'vue'
+    'vue',
+    'echarts'
   ]
 }

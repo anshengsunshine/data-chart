@@ -12,6 +12,6 @@ export default {
 </script>
 <style lang="less" scoped>
 .test_text{
-  font-size: 2rem;
+  font-size: 32px;
 }
 </style>

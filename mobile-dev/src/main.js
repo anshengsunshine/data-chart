@@ -2,6 +2,9 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import "./assets/style/reset.css"
+import "./assets/style/reset.css";
+import VChart from 'vue-echarts';
 
-createApp(App).use(store).use(router).mount("#app");
+const app = createApp(App)
+app.use(store).use(router).mount("#app");
+app.component('v-chart', VChart)

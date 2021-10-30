@@ -5,6 +5,7 @@
     <sales-bar />
     <sales-line />
     <sales-pie />
+    <sales-map />
   </div>
 </template>
 

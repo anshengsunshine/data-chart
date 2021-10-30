@@ -3,6 +3,7 @@
     <div class="datav_wrapper"></div>
     <top-header />
     <sales-bar />
+    <sales-line />
   </div>
 </template>
 

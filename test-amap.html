@@ -13,28 +13,56 @@
             height: 100%;
         }
 
+        .wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
         #container {
             width: 100%;
             height: 100%;
         }
 
-        .anchorBL,
-        .BMap_cpyCtrl {
-            display: none;
+        .btn {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
         }
     </style>
 </head>
 
 <body>
-    <div id="container"></div>
+    <div class="wrapper">
+        <div id="container"></div>
+        <div class="btn">
+            <button id="layer_btn">显示/隐藏图层</button>
+        </div>
+    </div>
+
     <script>
         var map = new AMap.Map('container', {
             center: [120.210911, 30.252333],
-            zoom: 20,
-            viewMode: '3D', // 地图模式
-            pitch: 75, // 地图俯仰角度，有效范围 0 度- 83 度
-            rotation: 10
+            zoom: 11,
+            // viewMode: '3D', // 地图模式
+            // pitch: 75, // 地图俯仰角度，有效范围 0 度- 83 度
+            // rotation: 10
         });
+        //实时路况图层
+        var trafficLayer = new AMap.TileLayer.Traffic({
+            zIndex: 10
+        });
+        map.add(trafficLayer);//添加图层到地图
+        let isVisbile = true;
+        const btn = document.getElementById("layer_btn")
+        btn.addEventListener('click', function (e) {
+            isVisbile = !isVisbile
+            if (isVisbile) {
+                trafficLayer.show()
+            } else {
+                trafficLayer.hide()
+            }
+        })
     </script>
 </body>
 

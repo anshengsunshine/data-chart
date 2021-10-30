@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <div class="test_text">测试测试rem</div>
-    <bar-comp />
+    <div class="datav_wrapper"></div>
   </div>
 </template>
 
@@ -11,7 +10,19 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.test_text {
-  font-size: 32px;
+.home {
+  position: relative;
+  height: 100%;
+  .datav_wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-image: url("//datav.oss-cn-hangzhou.aliyuncs.com/uploads/images/44b2ad11c37339db11f8ca5d59c5b31c.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
 }
 </style>

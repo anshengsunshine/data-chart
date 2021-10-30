@@ -4,6 +4,7 @@
     <top-header />
     <sales-bar />
     <sales-line />
+    <sales-pie />
   </div>
 </template>
 

@@ -44,6 +44,10 @@
         var map = new AMap.Map('container', {
             center: [120.210911, 30.252333],
             zoom: 11,
+            layers: [
+                new AMap.TileLayer.Satellite(),  //  卫星图层
+                new AMap.TileLayer.RoadNet(),  //  路 图层
+            ]
             // viewMode: '3D', // 地图模式
             // pitch: 75, // 地图俯仰角度，有效范围 0 度- 83 度
             // rotation: 10

@@ -12,9 +12,7 @@ export default {
       option: {
         title: {
           text: "分时访问&成交趋势图",
-          textStyle: {
-            color: "#fff",
-          },
+          color: "#fff",
           left: 10,
           top: 10,
         },

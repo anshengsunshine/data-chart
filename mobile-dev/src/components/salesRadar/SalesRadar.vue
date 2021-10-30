@@ -14,12 +14,10 @@ export default {
         radar: {
           // shape: 'circle',
           name: {
-            textStyle: {
-              color: "#fff",
-              backgroundColor: "#999",
-              borderRadius: 3,
-              padding: [3, 5],
-            },
+            color: "#fff",
+            backgroundColor: "#999",
+            borderRadius: 3,
+            padding: [3, 5],
           },
           indicator: [
             {

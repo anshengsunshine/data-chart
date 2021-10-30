@@ -12,9 +12,7 @@ export default {
       option: {
         title: {
           text: "今日销售额：253,089.10元",
-          textStyle: {
-            color: "#fff",
-          },
+          color: "#fff",
           top: 10,
         },
         tooltip: {

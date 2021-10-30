@@ -33,19 +33,15 @@ export default {
         title: [
           {
             text: title,
-            textStyle: {
-              color: "rgba(255,255,255,.3)",
-              fontSize: 12,
-            },
+            color: "rgba(255,255,255,.3)",
+            fontSize: 12,
             top: 3,
           },
           {
             text: value,
-            textStyle: {
-              color: "rgba(255,255,255)",
-              fontSize: 16,
-              fontWeight: 500,
-            },
+            color: "rgba(255,255,255)",
+            fontSize: 16,
+            fontWeight: 500,
             top: "43%",
             left: "32%",
           },

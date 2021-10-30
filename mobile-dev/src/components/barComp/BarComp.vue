@@ -6,9 +6,9 @@
 import { onMounted, ref } from "vue";
 import { use } from "echarts/core";
 import { CanvasRenderer } from "echarts/renderers";
-import { GridComponent } from "echarts/components";
+import { GridComponent, TitleComponent, TooltipComponent } from "echarts/components";
 import { BarChart } from "echarts/charts";
-use([CanvasRenderer, BarChart, GridComponent]);
+use([CanvasRenderer, BarChart, GridComponent, TitleComponent, TooltipComponent]);
 export default {
   name: "BarComp",
   setup() {

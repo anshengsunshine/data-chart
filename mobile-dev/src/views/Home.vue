@@ -2,6 +2,7 @@
   <div class="home">
     <div class="datav_wrapper"></div>
     <top-header />
+    <sales-bar />
   </div>
 </template>
 

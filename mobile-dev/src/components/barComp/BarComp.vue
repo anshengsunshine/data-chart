@@ -7,13 +7,14 @@ import { onMounted, ref } from "vue";
 import { use } from "echarts/core";
 import { CanvasRenderer } from "echarts/renderers";
 import { GridComponent, TitleComponent, TooltipComponent } from "echarts/components";
-import { BarChart, LineChart, PieChart, SunburstChart } from "echarts/charts";
+import { BarChart, LineChart, PieChart, SunburstChart, RadarChart } from "echarts/charts";
 use([
   CanvasRenderer,
   BarChart,
   LineChart,
   PieChart,
   SunburstChart,
+  RadarChart,
   GridComponent,
   TitleComponent,
   TooltipComponent,

@@ -7,6 +7,7 @@
     <sales-pie />
     <sales-map />
     <sales-sun />
+    <sales-radar />
   </div>
 </template>
 

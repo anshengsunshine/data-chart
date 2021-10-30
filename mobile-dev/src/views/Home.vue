@@ -6,6 +6,7 @@
     <sales-line />
     <sales-pie />
     <sales-map />
+    <sales-sun />
   </div>
 </template>
 
